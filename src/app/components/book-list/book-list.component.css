@@ -1,0 +1,111 @@
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+h1 {
+  margin: 0;
+  font-size: 28px;
+}
+.muted {
+  color: var(--ink-muted);
+  margin: 4px 0 0;
+}
+.error-box {
+  background: #f7e7e7;
+  border: 1px solid #e3c5c5;
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+.empty {
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+  padding: 48px 24px;
+}
+.empty h2 {
+  margin: 0 0 4px;
+}
+.empty .btn {
+  display: inline-block;
+  margin-top: 16px;
+  text-decoration: none;
+}
+.book-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.book-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--green-deep);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+.book-row[data-status="POZAJMLJENO"] {
+  border-left-color: var(--amber);
+}
+.book-row[data-status="REZERVISANO"] {
+  border-left-color: var(--blue);
+}
+.book-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.book-title {
+  font-family: Georgia, serif;
+  font-size: 17px;
+}
+.book-meta {
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+.chip {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip[data-status="DOSTUPNO"] {
+  background: var(--green-soft);
+  color: var(--green-deep);
+}
+.chip[data-status="POZAJMLJENO"] {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+.chip[data-status="REZERVISANO"] {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.actions a {
+  text-decoration: none;
+}
+@media (max-width: 640px) {
+  .book-row {
+    flex-wrap: wrap;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

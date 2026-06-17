@@ -1,0 +1,45 @@
+<div class="page-head">
+  <div>
+    <h1>Knjige</h1>
+    <p class="muted" *ngIf="!loading">{{ books.length }} u katalogu</p>
+  </div>
+  <a routerLink="/books/new" class="btn btn-primary">Dodaj knjigu</a>
+</div>
+
+<p *ngIf="loading" class="muted">Učitavanje kataloga…</p>
+<p *ngIf="error" class="error-box">{{ error }}</p>
+
+<div *ngIf="!loading && !error && books.length === 0" class="empty">
+  <h2>Katalog je prazan</h2>
+  <p class="muted">Dodaj prvu knjigu da bi se pojavila ovde.</p>
+  <a routerLink="/books/new" class="btn btn-primary">Dodaj knjigu</a>
+</div>
+
+<ul class="book-list" *ngIf="books.length > 0">
+  <li
+    *ngFor="let book of books"
+    class="book-row"
+    [attr.data-status]="book.status"
+  >
+    <div class="book-main">
+      <span class="book-title">{{ book.title }}</span>
+      <span class="book-meta">
+        {{ book.author }}
+        <ng-container *ngIf="book.publishedYear">
+          · {{ book.publishedYear }}</ng-container
+        >
+      </span>
+    </div>
+    <span class="chip" [attr.data-status]="book.status">{{
+      statusLabel(book.status)
+    }}</span>
+    <div class="actions">
+      <a [routerLink]="['/books', book.id, 'edit']" class="btn btn-ghost"
+        >Izmeni</a
+      >
+      <button type="button" class="btn btn-danger" (click)="deleteBook(book)">
+        Obriši
+      </button>
+    </div>
+  </li>
+</ul>

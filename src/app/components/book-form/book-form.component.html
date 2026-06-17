@@ -1,0 +1,61 @@
+<div class="form-card">
+  <h1>{{ isEdit ? "Izmeni knjigu" : "Nova knjiga" }}</h1>
+
+  <p *ngIf="error" class="error-box">{{ error }}</p>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      Naslov *
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="npr. Na Drini ćuprija"
+      />
+      <small class="field-error" *ngIf="invalid('title')"
+        >Naslov je obavezan.</small
+      >
+    </label>
+
+    <label>
+      Autor *
+      <input
+        type="text"
+        formControlName="author"
+        placeholder="npr. Ivo Andrić"
+      />
+      <small class="field-error" *ngIf="invalid('author')"
+        >Autor je obavezan.</small
+      >
+    </label>
+
+    <div class="row">
+      <label>
+        Godina izdanja
+        <input
+          type="number"
+          formControlName="publishedYear"
+          min="1000"
+          max="2100"
+        />
+        <small class="field-error" *ngIf="invalid('publishedYear')"
+          >Godina mora biti između 1000 i 2100.</small
+        >
+      </label>
+      <label>
+        Status
+        <select formControlName="status">
+          <option value="DOSTUPNO">Dostupna</option>
+          <option value="POZAJMLJENO">Pozajmljena</option>
+          <option value="REZERVISANO">Rezervisana</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <a routerLink="/" class="btn btn-ghost">Odustani</a>
+      <button type="submit" class="btn btn-primary" [disabled]="saving">
+        {{ saving ? "Čuvanje…" : isEdit ? "Sačuvaj izmene" : "Dodaj knjigu" }}
+      </button>
+    </div>
+  </form>
+</div>
