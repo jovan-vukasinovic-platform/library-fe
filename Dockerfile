@@ -20,5 +20,5 @@ COPY --from=build /app/dist/library-fe/browser /usr/share/nginx/html
 EXPOSE 80
 
 # ---------- Docker Commands ----------
-# docker build -t jovanvukasinovic/jovan-vukasinovic-platform:library-fe-latest -f Dockerfile .
-# docker push jovanvukasinovic/jovan-vukasinovic-platform:library-fe-latest
+# docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/jovan-vukasinovic-platform:library-fe-latest -f Dockerfile .
+# docker push ${{ secrets.DOCKERHUB_USERNAME }}/jovan-vukasinovic-platform:library-fe-latest
