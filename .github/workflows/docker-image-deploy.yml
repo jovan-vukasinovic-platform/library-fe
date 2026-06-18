@@ -31,7 +31,7 @@ jobs:
         id: image
         shell: bash
         run: |
-          DATE_TAG=$(date -u +'%Y%m%d')
+          DATE_TAG=$(TZ=Europe/Belgrade date +'%Y%m%d_%H%M')
           FULL_TAG="${IMAGE_NAME}:library-fe-${DATE_TAG}"
           echo "full_tag=${FULL_TAG}" >> "$GITHUB_OUTPUT"
           echo "Docker image: ${FULL_TAG}"     
