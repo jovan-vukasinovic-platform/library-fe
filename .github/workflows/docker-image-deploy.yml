@@ -65,7 +65,7 @@ jobs:
           ignore-unfixed: false     # Trivy će oboriti pipeline iako ne postoji patch!
           format: table
           output: trivy-report.txt
-          exit-code: 3152
+          exit-code: 1
         
       # Prikazuje rezultat u GitHub Actions logu, čak i kada je Trivy prethodno oborio pipeline
       - name: Display Trivy report

@@ -10,7 +10,9 @@ COPY ./ /app/
 RUN npm run build
 
 # ---------- Runtime stage ----------
-FROM nginx:1.27-alpine AS runtime
+# Before: https://hub.docker.com/layers/library/nginx/1.27-alpine/images/sha256-297103a3c691cdcf92468fe0a3000e14399530c42a3d6a9ec4b4fc0b2442a4bb
+# After: https://hub.docker.com/layers/library/nginx/1.30.3-alpine3.23-slim/images/sha256-e0ce3a19af7fc65c15a237810147e411f20483b096d39486c9a2fc572329a9d5
+FROM nginx:1.30.3-alpine3.23-slim AS runtime
 # NGINX konfiguracija (fallback na index.html za Angular rute)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Angular Builder izbacuje browser bundle u dist/library-fe/browser
