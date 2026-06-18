@@ -6,10 +6,10 @@ Angular 17 (standalone komponente) frontend za katalog knjiga. CRUD nad `applica
 
 ```bash
 npm install
-npm start        # ng serve sa proxy-jem: /api -> http://localhost:8080
+npm start        # ng serve sa proxy-jem: /api -> http://library-be:8080
 ```
 
-Aplikacija: http://localhost:4200 (bekend mora biti pokrenut na :8080).
+Aplikacija: http://library-fe:4200 (bekend mora biti pokrenut na :8080).
 
 ## Build (production)
 
@@ -22,8 +22,8 @@ npm run build
 
 - `src/environments/environment.ts` (production): `apiUrl: '/api'` — u klasteru FE i BE
   dele isti ingress, pa su pozivi same-origin i nema CORS problema.
-- `src/environments/environment.development.ts` + `proxy.conf.json`: dev rezim,
-  proxy prosledjuje `/api` na `localhost:8080`.
+- `src/environments/environment.development.ts` + `proxy.conf.json`: dev rezim sa Docker Desktopom,
+  proxy prosledjuje `/api` na `library-be:8080`.
 
 ## Strane
 
