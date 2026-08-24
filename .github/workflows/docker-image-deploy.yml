@@ -20,7 +20,7 @@ jobs:
       id-token: write   # OIDC token za AWS (bez sačuvanih ključeva)
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Build-uj tačno onaj commit koji je prošao CI (ne najnoviji main)
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
